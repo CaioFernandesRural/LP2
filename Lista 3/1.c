@@ -6,6 +6,7 @@ int main(){
     long int fat(int n);
     int pot(int x, int y);
     int mult(int x, int y);
+    int mod(int x,int y);
 
     while(1){
 
@@ -28,14 +29,29 @@ int main(){
             printf("Digite Y: ");
             scanf("%d",&y);
 
-            xpoty=pot(x,y);
-            printf("\n%d ^ %d = %d\n",x,y,xpoty);
+            printf("\n%d ^ %d = %d\n",x,y,pot(x,y));
         }
 
         else if (es==3){
+            printf("\nDigite X: ");
+            scanf("%d",&x);
+            printf("Digite Y: ");
+            scanf("%d",&y);
 
+            printf("\n%d * %d = %li\n",x,y,mult(x,y));
         }
-    }
+        else if (es==4){
+            printf("\nDigite X: ");
+            scanf("%d",&x);
+            printf("Digite Y: ");
+            scanf("%d",&y);
+
+            printf("\n%d %% %d = %d\n",x,y,mod(x,y));
+        }
+        else if(es==6){
+            break;
+        }
+    }   
 
 }
 
@@ -60,4 +76,29 @@ int pot(int x,int y){
         return(x*pot(x,y-1));
     }
 }
-int mult(int x, int y);
+int mult(int x, int y){
+
+    if (x==0 || y==0){
+        return 0;
+    }
+    else if(x>0 && y>0){
+        return (x+mult(x,y-1));
+    }
+    else if(x>0 && y<0){
+        return (y+mult(x-1,y));
+    }
+    else if(x<0 && y>0){
+        return (x+mult(x,y-1));
+    }
+    else if(x<0 && y<0){
+        return (-x+mult(-x,-y-1));
+    }
+        
+}
+int mod(int x,int y){
+
+    while(x>y){
+        x-=y;
+    }
+
+}
