@@ -1,20 +1,26 @@
 #include <stdio.h>
 #include <math.h>
 
+float mai10(int n){
+    return sqrt(n-10)/2;
+}
+float men4(int n){
+    return sqrt(pow(n,2)+1)/2;
+}
+float meio(int n){
+    return pow(n,3)/(pow(n,2)-16);
+}
 float fun(int n){
-    
-    float res;
 
     if (n>=10){
-        res=sqrt(n-10)/2;
+        return mai10(n);
     }
     else if (n<=4){
-        res=sqrt(pow(n,2)+1)/2;
+        return men4(n);
     }
     else{
-        res=pow(n,3)/(pow(n,2)-16);
+        return meio(n);
     }
-    return res;
 }
 
 int main(){
@@ -23,7 +29,7 @@ int main(){
 
     while(1){
 
-        printf("\nNúmero(negativo para):");
+        printf("\nNúmero(<=0 para):");
         scanf("%d",&n);
 
         if (n<=0){
