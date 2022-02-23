@@ -7,6 +7,7 @@ int main(){
     int pot(int x, int y);
     int mult(int x, int y);
     int mod(int x,int y);
+    int fibo(int n);
 
     while(1){
 
@@ -47,6 +48,16 @@ int main(){
             scanf("%d",&y);
 
             printf("\n%d %% %d = %d\n",x,y,mod(x,y));
+        }
+        else if (es==5){
+            printf("\nDigite N: ");
+            scanf("%d",&n);
+
+            printf("\n0 ");
+            for (int c=1;c<n;c++)
+                printf("%d ",fibo(c));
+            printf("%d\n",fibo(n));
+            
         }
         else if(es==6){
             break;
@@ -97,8 +108,16 @@ int mult(int x, int y){
 }
 int mod(int x,int y){
 
-    while(x>y){
-        x-=y;
+    if(x<y){
+        return x;
+    }   
+    return(mod(x-y,y));
+}
+int fibo(int n){
+    if (n<=1){
+        return n;
     }
-
+    else{
+        return (fibo(n-1)+fibo(n-2));
+    }
 }
