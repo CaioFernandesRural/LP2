@@ -40,7 +40,7 @@ int main(){
 
     while(1){
 
-        printf("Se for par verifica divisores.\nSe impar e < que 10 calcula fatorial.\nSe impar e maior ou igual a 10\n");
+        printf("Se for par verifica divisores.\nSe impar e < que 10 calcula fatorial.\nSe impar >= a 10 soma dos inteiros de 1 a n.\n");
         printf("Número(negativo para):");
         scanf("%d",&n);
 
@@ -48,13 +48,14 @@ int main(){
             break;
         }
         if (n%2==0){
+            printf("\n");
             printf("= %d divisores\n",div(n));
         }
         else if(n%2!=0 && n<10){
-            printf("%d! = %ld\n",n,fat(n));
+            printf("\n%d! = %ld\n",n,fat(n));
         }
         else if(n%2!=0 && n>=10){
-            printf("Soma dos inteiros de 1 até n = %d",nms(n));
+            printf("\nSoma dos inteiros de 1 até n = %d\n",nms(n));
         }
     }
 }
