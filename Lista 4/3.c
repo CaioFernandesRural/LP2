@@ -1,30 +1,26 @@
 # include <stdio.h>
-# include <stdlib.h>
 
-main () {
+int main () {
 
   int n, face;
   int dado [6];
 
-  for (int i = 1; i <= 6; i++) {
-    dado [i] = 0;
+  for (int c=1; c<=6;c++) {
+    dado [c]=0;
   }
 
-  printf ("Quantas vezes ? ");
+  printf ("Quantos lancamentos? ");
   scanf ("%d", &n);
 
-  for (int i = 1; i <= n; i++) {
-    printf ("Face do %d lancamento: ", i);
+  for (int c=1; c<=n;c++) {
+    printf ("Face do %d lancamento: ",c);
     scanf ("%d", &face);
     dado [face]++;
   }
 
-  for (int i = 1; i <= n; i++) {
-    if (dado [i] != 0) {
-      printf ("A face %d do dado caiu %d vezes. \n", i, dado [i]);
+  for (int c=1; c<=n;c++) {
+    if (dado [c]!=0) {
+      printf ("A face %d caiu %d vez(es). \n", c, dado [c]);
     }
   }
-
-  return 0;
-
 }
