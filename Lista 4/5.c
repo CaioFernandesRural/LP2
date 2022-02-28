@@ -2,29 +2,40 @@
 
 int main(){
 
-   int mat[4][5],con;
+   int mat[4][5],dob[4][5],som[4][5];
 
-   for(int c=0;c<4;c++){
+   for(int lin=0;lin<4;lin++){
 
-      for(int c=0;c<5;c++){
-         printf("numero: ");
-         scanf("%d",&mat[0][c]);}
+      for(int col=0;col<5;col++){
 
-      for(int c=0;c<5;c++){
-         printf("numero: ");
-         scanf("%d",&mat[1][c]);}
+         printf("Numero: ");
+         scanf("%d",&mat[lin][col]);
 
-      for(int c=0;c<5;c++){
-         printf("numero: ");
-         scanf("%d",&mat[2][c]);}
-         
-      for(int c=0;c<5;c++){
-         printf("numero: ");
-         scanf("%d",&mat[3][c]);}
-      
-
+      }
+      printf("\n");
    }
-       
-   
+   printf("\nDobro:\n");
 
+   for(int lin=0;lin<4;lin++){
+
+      for(int col=0;col<5;col++){
+
+         dob[lin][col]=mat[lin][col]*2;
+         printf("%d ",dob[lin][col]);
+
+      }
+      printf("\n");
+   }
+   printf("\nSoma:\n");
+
+   for(int lin=0;lin<4;lin++){
+
+      for(int col=0;col<5;col++){
+
+         som[lin][col]=dob[lin][col]+mat[lin][col];
+         printf("%d ",som[lin][col]);
+
+      }
+      printf("\n");
+   }
 }
