@@ -1,74 +1,83 @@
 #include <stdio.h>
-#include <strings.h>
+#include <string.h>
 #include <stdlib.h>
 
-void mai(char *x){  //funfa
+void mai(char *x){
     
-    int c=0;
-    
-    if(x[c]>=97 && x[c]<=122){
+    for (int c=0; c<strlen(x); c++){
 
-        *x-=32;
+        if (*(x+c)>=97 && *(x+c)<=122){
+
+            *(x+c)-=32;
+        }
     }
-
+    printf("%s\n",x);
 }
 
-int conc(char *x, char *y, char *z){ //n funfa
+char conc(char *x, char *y){
 
-    int con=0;
+    int tam=strlen(x);
 
-    while(x[con]!='\0'){
+    for(int c=0; c<strlen(y)+1; c++){
+
+        *(x+tam)=*(y+c);
         
-        z[con]=x[con];
-        con++;
+        tam++;
     }
-    while(y[con]!='\0'){
-        
-        z[con]=y[con];
-        con++;
-    }
-    //str3[con]='\0';
-
+    return(x);
 }
 
-int cap(char *x){  //funfa +-
+int cap(char *x){
 
-    int con=0;
+    for (int c=0; c<strlen(x); c++){
 
-    if(x[con-1]==32 && x[con]>=97 && x[con]<=122){
+        if(c==0){
 
-        *x-=32;
+            if(*(x+c)>=97 && *(x+c)<=122){
+
+                *(x+c)-=32;
+            }
+            else if(*(x+c)==32){
+
+                if (*(x+c+1)>=97 && *(x+c+1)<=122){
+                    *(x+c+1)-=32;
+                }
+            }
+        }
+
     }
-    con++;
-    
-    
+    printf("%s\n",x);
+    return strlen(x);
 }
 
-int comp(char *x, char *y){ //funfa +-
+int comp(char *x, char *y){
 
-    int conx=0,cony=0;
+    int resu=0, tammenstr;
 
-    while(x[conx]!='\0'){
+    if(strlen(x)<strlen(y)){
 
-        conx++;
+        tammenstr=strlen(x);
     }
-    while(y[cony]!='\0'){
+    else{
 
-        cony++;
+        tammenstr=strlen(y);
     }
+    for (int c=0; c<tammenstr; c++){
 
-    if(conx>cony) {return 1;}
+        if(*(x+c)==*(y+c)){
 
-    else if(conx<cony) {return -1;}
+            continue;
+        }
+        else if(*(x+c)<*(y+c)) {return -1;}
 
-    else {return 0;}
-
+        else {return 1;}
+    }
 }
 
 int main(){
 
-    char str1[30],str2[30],str3[60];
-    int con=0;
+    char str1[30],str2[30];
+    int op,tamstr;
 
     printf("Digite: ");
     gets(str1);
@@ -76,45 +85,24 @@ int main(){
     gets(str2);
 
     printf("\n");
-    while(str1[con]!='\0'){
 
-        mai(&str1[con]);
+    mai(str1);
+    mai(str2);
 
-        printf("%c", str1[con]);
-        con++;
-    }
-    con=0;
     printf("\n");
 
-    /*while(str1[con]!='\0'){
+    conc(str1, str2);
+    printf("Concatenados: %s\n",str1);
 
-        cap(&str1[con]);
-
-        printf("%c", str1[con]);
-        con++;
-    }
-    con=0;
     printf("\n");
-    printf("\n");*/
-    
-    /*while(str2[con]!='\0'){
 
-        mai(&str2[con]);
+    tamstr=cap(str1);
+    printf("A string tem %d caracteres\n", tamstr);
 
-        printf("%c", str2[con]);
-        con++;
-    }*/
-    
-    /*while(str3[con]!='\0'){
+    printf("\n");
 
-        conc(&str1[con],&str2[con],&str3[con]);
+    int resu=comp(str1, str2);
+    printf("%d\n", resu);
 
-        printf("%c",str3[con]);
-
-        con++;
-
-    }*/
-
-    /*printf("%d",comp(str1,str2));*/
-
+    printf("\n");
 }
