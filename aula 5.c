@@ -183,3 +183,91 @@ void main(){
 
 }*/
 //---------------------------------
+/*char conca(char *x, char *y){
+
+    int con=strlen(x);
+
+    for(int c=0;c<strlen(y);c++){
+
+        *(x+con)=*(y+c);
+        con++;
+    }
+    return x;
+}
+int len(char *x){
+
+    int con=0;
+
+    for(int c=0; c<strlen(x); c++){
+
+        con++;
+
+    }
+    return con;
+}
+int comp(char *x, char *y){
+
+    int cx=0,cy=0;
+
+    if(strlen(x)>strlen(y)){
+
+        return 1;
+    }
+    else if(strlen(x)<strlen(y)){
+
+        return -1;
+    }
+    else{
+        return 0;
+    }
+}
+void main(){
+
+    char str1[30],str2[30];
+
+    printf("Digite: ");
+    gets(str1);
+    printf("\nDigite: ");
+    gets(str2);
+
+    printf("\n%d\n",comp(str1,str2));
+
+    printf("\n%d\n",len(str1));
+
+    conca(str1,str2);
+    
+    printf("\n%s\n",str1);
+
+}*/
+//---------------------------------
+/*int comp(char *x,char *y){
+
+    int cont=0;
+
+    for(int c=0;c<10;c++){
+
+        if(*(x+c)==*(y+c)){
+            cont++;
+        }
+    }
+    if(cont==10){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+int main(){
+
+    int vet1[10],vet2[10];
+
+        for(int c=0;c<10;c++){
+
+            printf("\nvet 1: ");
+            scanf("%d",&vet1[c]);
+            printf("\nvet 2: ");
+            scanf("%d",&vet2[c]);
+
+        }
+        printf("\n%d\n\n",comp(vet1,vet2));
+}*/
