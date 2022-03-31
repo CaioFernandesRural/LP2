@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#define max 4
 /*void arr(int n){
     int ar[n];
 }*/
