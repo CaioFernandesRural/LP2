@@ -14,7 +14,7 @@
     float valor[num]; //declaração de vetor, errado!
 }*/
 //--------------------
-void main(){
+/*void main(){
 
     int vet[20],aux;
 
@@ -34,4 +34,22 @@ void main(){
     for (int c=0;c<20;c++){
         printf("%d, ",vet[c]);
     }
-}
+}*/
+//--------------------
+/*void fun(int n) //array tamanho variável
+{
+    int arr[n];
+
+    for(int c=0;c<n;c++){
+        arr[c]=c;
+        printf("%d, ",arr[c]);
+    }
+ 
+}  
+int main()
+{
+  fun(6);
+
+  printf("Digite: ");
+  
+}*/
