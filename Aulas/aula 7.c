@@ -205,8 +205,12 @@ automaticamente no início.
 a próxima posição.*/
 
 //EXEMPLO modo texto
-#include <stdio.h>
-
+/*#include <stdio.h>
+typedef struct
+{
+    char nome[31];
+    float salario;
+}Func;
 void inserir_registros (FILE *s)
 {
     Func f;
@@ -225,11 +229,7 @@ void inserir_registros (FILE *s)
     }
     
 }
-typedef struct
-{
-    char nome[31];
-    float salario;
-}Func;
+
 FILE* abrir_arquivo(char *nome)
 {
     FILE *s;
@@ -259,10 +259,9 @@ int listar_registros(char*arq)
     return 1;
     //daniel was here
 }
-main()
+int main()
 {
     FILE *s;
-    Func f;
 
     listar_registros ("agenda.dat");
     s=abrir_arquivo("agenda.dat");
@@ -270,5 +269,122 @@ main()
 
     fclose(s);
     listar_registros("agenda.dat");
+}*/
+//ARQUVIOS EM MODO BINÁRIO
+/*Escrita em Arquivos
+.int frwite(tipo *p, int tam, int qtd, FILE *arq)
+.O primeiro parâmetro aponta endereço do
+dado a ser excrito
+.tam indica tamanho em bytes de cada elemento
+.qtd indica a quantidade de elementos que
+serão escritos
+.arq ponteiro para o arquivo alvo
+.Retorna NULL caso não consiga escrever no arquivo
+EXEMPLO:*/
+/*#include <stdio.h>
+typedef struct
+{
+    int x, y, z;
+}Ponto;
+
+main()
+{
+    Ponto p;
+    FILE *f;
+    int i;
+
+    f=fopen("pontos.dat","wb");
+    if(f==NULL)
+    {
+        printf("\nERRO");
+    }
+    else
+    {
+        for(i=1;i<=3;i++)
+        {
+            printf("\n%d ponto:\n",i);
+            scanf("%d %d %d", &p.x, &p.y, &p.z);
+            fwrite(&p, sizeof(Ponto), i, f);
+        }
+    }
+    fclose(f);
+    return 0;
+}*/
+/*Leitura de Arquivos
+.int fread(tipo *p, int tam, int qtd, FILE *arq)
+.Similar à função fwrite(), diferença que agora
+o primeiro parâmetro aponta para o endereço do
+dado que vai receber o conteúdo extraído do arquivo
+.Retorna NULL caso não consiga ler do arquivo.
+EXEMPLO:*/
+/*#include <stdio.h>
+typedef struct
+{
+    int x, y, z;
+}Ponto;
+
+main()
+{
+    Ponto q;
+    FILE *fp;
+    int i;
+
+    fp=fopen("pontos.dat","rb");
+    if(fp==NULL)
+    {
+        printf("\nERRO");
+    }
+    else
+    {
+        for(i=1;i<=3;i++)
+        {
+            printf("\n%d ponto:\n",i);
+            fread(&q, sizeof(Ponto),i,fp);
+            printf("Ponto %d: x=%d, y=%d, z=%d", i, q.x, q.y, q.z);
+        }
+    }
+    fclose(fp);
+    return 0;
+}*/
+/*Reposicionando o Cursor
+.int fseek(FILE *arq, long offset, int origem):
+.Em arquivos binários podemos alterar a posição do
+cursor do arquivo e posicioná-lo para ler um
+dado específico.
+.offset indica qtos bytes iremos avançar.
+.origem indica a posição a partir de onde
+iremos avançar. Pode ser:
+.SEEK_CUR: a posição corrente 
+.SEEK_SET: o início do arquivo
+SEEK_END: o final do arquivo
+EXEMPLO:*/
+#include <stdio.h>
+
+typedef struct
+{
+    int x, y, z;
+}Ponto;
+
+main()
+{
+    Ponto q;
+    FILE *fp;
+    int i;
+
+    fp=fopen("pontos.dat","rb");
+    if(fp==NULL)
+    {
+        printf("\nERRO");
+    }
+    else
+    {
+        printf("\nQual ponto?");
+        scanf("%d",&i);
+        fseek(fp, i*sizeof(Ponto),SEEK_SET);
+        fread(&q, sizeof(Ponto),i,fp);
+        printf("Ponto %d: x=%d, y=%d, z=%d", i, q.x, q.y, q.z);
+    }
+    fclose(fp);
+    return 0;
 }
 
