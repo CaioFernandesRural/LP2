@@ -205,7 +205,7 @@ automaticamente no início.
 a próxima posição.*/
 
 //EXEMPLO modo texto
-/*#include <stdio.h>
+#include <stdio.h>
 
 void inserir_registros (FILE *s)
 {
@@ -257,6 +257,7 @@ int listar_registros(char*arq)
     }
     fclose(s);
     return 1;
+    //daniel was here
 }
 main()
 {
@@ -269,5 +270,5 @@ main()
 
     fclose(s);
     listar_registros("agenda.dat");
-}*/
+}
 
