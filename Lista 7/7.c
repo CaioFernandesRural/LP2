@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct
 {
@@ -23,6 +24,7 @@ typedef struct
 
 main()
 {//tentei habilitar a possibilidade de ter multiplas disciplinas mas não consegui.
+    FILE *d, *a, *b;
     disciplina disciplina; 
     int escolha, matricula, cvaga=0, ccr=0;
     float crm, med;
@@ -42,29 +44,47 @@ main()
 
         if(escolha==1)
         {
-            printf("\nNome da nova disciplina: ");
+            d=fopen("disciplina.txt","w");
+            if (d==NULL)
+            {
+                printf("\nERRO");
+                exit(1);
+            }
             fflush(stdin);
+            printf("\nNome da nova disciplina: ");
             gets(disciplina.nomedi);
+            fprintf(d,"%s\n",disciplina.nomedi);
+
             printf("\nCodigo da nova disciplina: ");
             scanf("%d",&disciplina.codigo);
-            for(int c=0;c<40;c++)
-            {
-                disciplina.turma[c].aluno.matricula=0;
-            }
+            fprintf(d,"%d\n",disciplina.codigo);
+            fclose(d);
 
+            a=fopen("alunos.txt","a");
+            for(int c=0;c<40;c++)
+            {   
+                disciplina.turma[c].aluno.matricula=0;
+                fprintf(a,"%d\n", disciplina.turma[c].aluno.matricula);
+                fclose(a);
+            }
         }
         else if(escolha==2)
         {
+            a=fopen("alunos.txt","a");
+
             for(int c=0;c<40;c++)
             {
                 if(disciplina.turma[c].aluno.matricula == 0)
                 {
+                    fseek(a, c, SEEK_SET);
                     printf("\nDigite a matricula do aluno: ");
                     scanf("%d",&disciplina.turma[c].aluno.matricula);
+                    fprintf(a,"%d",disciplina.turma[c].aluno.matricula);
                     
                     printf("\nNome do aluno: ");
                     fflush(stdin);
                     gets(disciplina.turma[c].aluno.nome);
+                    fprintf(a,"%s",disciplina.turma[c].aluno.nome);
 
                     printf("\nIdade do aluno: ");
                     scanf("%d",&disciplina.turma[c].aluno.idade);

@@ -205,7 +205,7 @@ automaticamente no início.
 a próxima posição.*/
 
 //EXEMPLO modo texto
-/*#include <stdio.h>
+#include <stdio.h>
 typedef struct
 {
     char nome[31];
@@ -224,7 +224,7 @@ void inserir_registros (FILE *s)
         printf("\nSalario? ");
         scanf("%f",&f.salario);
         fprintf(s,"%s %f \n", f.nome, f.salario);
-        printf("\nNome?");
+        printf("\nNome? ");
         scanf("%s", f.nome);
     }
     
@@ -269,7 +269,7 @@ int main()
 
     fclose(s);
     listar_registros("agenda.dat");
-}*/
+}
 //ARQUVIOS EM MODO BINÁRIO
 /*Escrita em Arquivos
 .int frwite(tipo *p, int tam, int qtd, FILE *arq)
@@ -358,7 +358,7 @@ iremos avançar. Pode ser:
 .SEEK_SET: o início do arquivo
 SEEK_END: o final do arquivo
 EXEMPLO:*/
-#include <stdio.h>
+/*#include <stdio.h>
 
 typedef struct
 {
@@ -386,5 +386,5 @@ main()
     }
     fclose(fp);
     return 0;
-}
+}*/
 
