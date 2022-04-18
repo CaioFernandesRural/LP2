@@ -3,22 +3,14 @@
 typedef struct
 {
     int dia, mes, ano;
-}tpdata;
+}tpData;
 
-tpdata *inicializa(void)
-{
-    tpdata *dt;
-    dt=(tpdata*) malloc(sizeof(tpdata));
-
-    printf("\nDia: ");
-    scanf("%d",&dt->dia);
-
-    printf("\nMes: ");
-    scanf("%d",&dt->mes);
-
-    printf("\nAno: ");
-    scanf("%d",&dt->ano);
-
+tpData *inicializa(int d, int m, int a){
+    tpData *dt;
+    dt = (tpData*) malloc(sizeof(tpData));
+    dt->dia = d;
+    dt->mes = m;
+    dt->ano = a;
     return dt;
 }
 
@@ -27,16 +19,26 @@ void valida()
 
 }
 
-void imprime(tpdata *d1)
+void imprime(tpData *d1)
 {
-    printf("\ndia = %d\nmes = %d\nano = %d",d1->dia,d1->mes,d1->ano);
+    printf("\ndia = %d\nmes = %d\nano = %d",(*d1).dia,(*d1).mes,(*d1).ano);
 }
 
 void main()
 {
-    int data;
+    tpData *data;
+    int dia,mes,ano;
 
-    inicializa();
+    printf("\nDia: ");
+    scanf("%d",&dia);
+
+    printf("\nMes: ");
+    scanf("%d",&mes);
+
+    printf("\nAno: ");
+    scanf("%d",&ano);
+
+    inicializa(dia,mes,ano);
     imprime(data);
 
     getch();
