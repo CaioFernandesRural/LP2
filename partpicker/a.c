@@ -3,69 +3,81 @@
 
 typedef struct
 {
-    char fabricante;
+    char fabricante[20];
     int wifi;
     int blue;
-    char sckt;
+    char sckt[20];
 }plmae;
 typedef struct
 {
-    char nome;
+    char nome[20];
     float clock;
-    char marca;
+    char marca[20];
     int nucleos;
     int threads;
     int cache;
-    char sckt;
+    char sckt[20];
 }cpu;
 typedef struct
 {
-    char fabricante;
-    char nome;
+    char fabricante[20];
+    char nome[20];
     int clock;
     int vram;
     int ray;
 }gpu;
 typedef struct
 {
-    char marca;
+    char marca[20];
     int watts;
-    char cert;
+    char cert[20];
 }fon;
 typedef struct
 {
-    char marca;
+    char marca[20];
     int capacidade;
     int rpm;
 }hdd;
 typedef struct
 {
-    char marca;
+    char marca[20];
     int capacidade;
-    char tipo;
+    char tipo[20];
     int velocidade;
 }ssd;
 typedef struct
 {
-    char marca;
+    char marca[20];
     int capacidade;
     int velocidade;
-    char geracao;
+    char geracao[20];
 }ram;
 typedef struct
 {
-    char nome;
-    plmae plm;
-    cpu cpu;
-    gpu gpu[1];
-    fon fon;
-    hdd hdd[3];
-    ssd ssd[3];
-    ram ram[3];
+    char nome[20];
+    plmae plma;
+    cpu cpua;
+    gpu gpua[2];
+    fon fona;
+    hdd hdda[4];
+    ssd ssda[4];
+    ram rama[4];
 }pc;
+
+void novo(pc *pc)
+{
+    printf("\nNome: ");
+    fflush(stdin);
+    gets(pc->nome);
+    printf("\n%s",pc->nome);
+}
+void mostra(pc pc)
+{
+    printf("\nNome: %s\n",pc.nome);
+}
 main()
 {
-    pc pc;
+    pc pca[2];
     int esc0, esc1;
 
     while (1>0)
@@ -80,34 +92,36 @@ main()
 
         if (esc0==1)
         {
-            printf("\nQual slot ocupar(1-3)? ");
+            printf("\nQual slot ocupar(1-2)? ");
             scanf("%d",&esc1);
-            if (esc1==1)
+            if (esc1>=1 && esc1<=2)
             {
-                printf("\nNome: ");
-                fflush(stdin);
-                gets(pc.nome);//morre no gets
+                novo(&pca[esc1-1]);
+                printf("\n%s",pca[esc1].nome);
             }
-            
+            else
+            {
+                printf("\nERRO!\n");
+            }
         }
         else if (esc0==3)
         {
-            printf("\nQual slot mostrar(1-3)? ");
+            printf("\nQual slot mostrar(1-2)? ");
             scanf("%d",&esc1);
-            if(esc1==1)
+            if(esc1>=1 && esc1<=2)
             {
-                printf("\nNome:%c",pc);
+                mostra(pca[esc1-1]);
             }
+            else
+            {
+                printf("\nERRO!\n");
+            }
+            
         }
         else if (esc0==5)
         {
-            printf("\nAdios");
+            printf("\nAdios\n");
             break;
         }
-        
-        
-        
     }
-    
-
 }

@@ -175,7 +175,7 @@ typedef struct{ //deixa o código mais legível
     int dia, mes, ano;
 } tpData;*/
 
-/*typedef struct{
+typedef struct{
     int dia, mes, ano;
 }tpData;
 
@@ -206,6 +206,6 @@ main(){
     imprime_data3(dt);
 
     getch();
-}*/
+}
 
 
