@@ -69,56 +69,41 @@ void novo(pc *pc, int es)
     FILE *fp;
     if (es==1) {fp=fopen("pc1.txt","w");}
     else {fp=fopen("pc2.txt","w");}
-    
 
     printf("\nNome: ");
     fflush(stdin);
     gets(pc->nome);
+    fprintf(fp,"Nome: %s",pc->nome);
+    
     printf("---Processador---");
-    printf("Preco(R$): ");
+    printf("\nPreco(R$): ");
     scanf("%f",&pc->cpua.preco);
     printf("\nMarca: ");
     scanf("%s",&pc->cpua.marca);
-    /*printf("Socket: ");
-    scanf("%s",&pc->cpua.sckt);
-    printf("Clock(GHz): ");
-    scanf("%f",&pc->cpua.clock);
-    printf("Nucleos: ");
-    scanf("%d",&pc->cpua.nucleos);
-    printf("Threads: ");
-    scanf("%d",&pc->cpua.threads);
-    printf("Cache(Mb): ");
-    scanf("%d",&pc->cpua.cache);*/
+    fprintf(fp,"\n---Processador---\nPreco(R$): %.2f\nMarca: %s",pc->cpua.preco,pc->cpua.marca);
+
     printf("---Placa Mãe---");
-    printf("Fabricante: ");
+    printf("\nFabricante: ");
     scanf("%s",&pc->plma.fabricante);
-    printf("Socket: ");
+    printf("Socket: \n");
     scanf("%s",&pc->plma.sckt);
-    /*printf("Wi-Fi?(0-1) ");
-    scanf("%d",&pc->plma.wifi);
-    printf("Bluetooth?(0-1) ");
-    scanf("%d",&pc->plma.blue);*/
-    
+    fprintf(fp,"\n---Placa Mãe---\nFabricante: %s\nSocket: %s",pc->plma.fabricante,pc->plma.sckt);
+
     fclose(fp);
 }
-void mostra(pc pc)
+void mostra(pc pc,int es)
 {
+    FILE *fp;
+    if (es==1) {fp=fopen("pc1.txt","w");}
+    else {fp=fopen("pc2.txt","w");}
+
     printf("\nNome: %s",pc.nome);
     printf("\n---Processador---");
     printf("\nPreco: R$%.2f",pc.cpua.preco);
     printf("\nMarca: %s",pc.cpua.marca);
-    /*printf("\nSocket: %s",pc.cpua.sckt);
-    printf("\nClock: %.2f MHz",pc.cpua.clock);
-    printf("\nNucleos: %d",pc.cpua.nucleos);
-    printf("\nThreads: %d",pc.cpua.threads);
-    printf("\nCache: %dMb",pc.cpua.cache);*/
     printf("\n---Placa Mae---");
     printf("\nFabricante: %s",pc.plma.fabricante);
     printf("\nSocket: %s",pc.plma.sckt);
-    /*if (pc.plma.wifi>0) {printf("\nWi-Fi: sim");}
-    else {printf("\nWi-Fi: nao");}
-    if (pc.plma.blue>0) {printf("\nBluetooth: sim");}
-    else {printf("\nBluetooth: nao\n\n");}*/
 }
 int main()
 {
@@ -155,7 +140,7 @@ int main()
             scanf("%d",&esc1);
             if(esc1>=1 && esc1<=2)
             {
-                mostra(pca[esc1-1]);
+                mostra(pca[esc1-1], esc1);
             }
             else
             {
