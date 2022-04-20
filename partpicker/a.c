@@ -10,9 +10,9 @@ typedef struct
 }plmae;
 typedef struct
 {
-    char nome[20];
-    float clock;
     char marca[20];
+    float preco;
+    int clock;
     int nucleos;
     int threads;
     int cache;
@@ -66,19 +66,65 @@ typedef struct
 
 void novo(pc *pc)
 {
+    FILE *fp;
+    fp=fopen("pcs.txt","a");
+
     printf("\nNome: ");
     fflush(stdin);
     gets(pc->nome);
-    printf("\n%s",pc->nome);
+    printf("---Processador---");
+    printf("Preco(R$): ");
+    scanf("%f",&pc->cpua.preco);
+    printf("\nMarca: ");
+    scanf("%s",&pc->cpua.marca);
+    /*printf("Socket: ");
+    scanf("%s",&pc->cpua.sckt);
+    printf("Clock(GHz): ");
+    scanf("%f",&pc->cpua.clock);
+    printf("Nucleos: ");
+    scanf("%d",&pc->cpua.nucleos);
+    printf("Threads: ");
+    scanf("%d",&pc->cpua.threads);
+    printf("Cache(Mb): ");
+    scanf("%d",&pc->cpua.cache);*/
+    printf("---Placa Mãe---");
+    printf("Fabricante: ");
+    scanf("%s",&pc->plma.fabricante);
+    printf("Socket: ");
+    scanf("%s",&pc->plma.sckt);
+    /*printf("Wi-Fi?(0-1) ");
+    scanf("%d",&pc->plma.wifi);
+    printf("Bluetooth?(0-1) ");
+    scanf("%d",&pc->plma.blue);*/
+    
+    fclose(fp);
 }
 void mostra(pc pc)
 {
-    printf("\nNome: %s\n",pc.nome);
+    printf("\nNome: %s",pc.nome);
+    printf("\n---Processador---");
+    printf("\nPreco: R$%.2f",pc.cpua.preco);
+    printf("\nMarca: %s",pc.cpua.marca);
+    /*printf("\nSocket: %s",pc.cpua.sckt);
+    printf("\nClock: %.2f MHz",pc.cpua.clock);
+    printf("\nNucleos: %d",pc.cpua.nucleos);
+    printf("\nThreads: %d",pc.cpua.threads);
+    printf("\nCache: %dMb",pc.cpua.cache);*/
+    printf("\n---Placa Mae---");
+    printf("\nFabricante: %s",pc.plma.fabricante);
+    printf("\nSocket: %s",pc.plma.sckt);
+    /*if (pc.plma.wifi>0) {printf("\nWi-Fi: sim");}
+    else {printf("\nWi-Fi: nao");}
+    if (pc.plma.blue>0) {printf("\nBluetooth: sim");}
+    else {printf("\nBluetooth: nao\n\n");}*/
 }
-main()
+int main()
 {
     pc pca[2];
     int esc0, esc1;
+    FILE * fp;
+
+    fp = fopen("pcs.txt","w");
 
     while (1>0)
     {
@@ -96,8 +142,8 @@ main()
             scanf("%d",&esc1);
             if (esc1>=1 && esc1<=2)
             {
+                fp = fopen("pcs.txt","w");
                 novo(&pca[esc1-1]);
-                printf("\n%s",pca[esc1].nome);
             }
             else
             {
