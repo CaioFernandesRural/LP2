@@ -64,10 +64,12 @@ typedef struct
     ram rama[4];
 }pc;
 
-void novo(pc *pc)
+void novo(pc *pc, int es)
 {
     FILE *fp;
-    fp=fopen("pcs.txt","a");
+    if (es==1) {fp=fopen("pc1.txt","w");}
+    else {fp=fopen("pc2.txt","w");}
+    
 
     printf("\nNome: ");
     fflush(stdin);
@@ -124,8 +126,6 @@ int main()
     int esc0, esc1;
     FILE * fp;
 
-    fp = fopen("pcs.txt","w");
-
     while (1>0)
     {
         printf("\n1-Novo Pc \n");
@@ -142,8 +142,7 @@ int main()
             scanf("%d",&esc1);
             if (esc1>=1 && esc1<=2)
             {
-                fp = fopen("pcs.txt","w");
-                novo(&pca[esc1-1]);
+                novo(&pca[esc1-1], esc1);
             }
             else
             {
