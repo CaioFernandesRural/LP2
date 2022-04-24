@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
+#include <string.h>
 
 typedef struct
 {
@@ -87,26 +89,39 @@ void novo(pc *pc, int es)
     scanf("%s",&pc->plma.fabricante);
     printf("Socket: ");
     scanf("%s",&pc->plma.sckt);
-    fprintf(fp,"\n---Placa Mãe---\nFabricante: %s\nSocket: %s",pc->plma.fabricante,pc->plma.sckt);
+    fprintf(fp,"\n---Placa Mae---\nFabricante: %s\nSocket: %s",pc->plma.fabricante,pc->plma.sckt);
 
     fclose(fp);
 }
 void altera(pc pc, int es)
 {
     FILE *fp;
-    int proc;
-    char esc[10];
+    int m, n, linha, i, j;
+    char esco[10] , esco0[10], alvo[200], buffer[200];
 
-    if (es==1) {fp=fopen("pc1.txt","r");}
-    else {fp=fopen("pc2.txt","r");}
+    if (es==1) {fp=fopen("pc1.txt","a+");}
+    else {fp=fopen("pc2.txt","a+");}
 
-    while (1>0)
+    printf("\nParte a ser alterada: ");
+    fflush(stdin);
+    gets(esco);
+
+    if (tolower(esco) == "processador")
     {
-        printf("\nParte a ser alterada, fim encerra: ");
-        scanf("%d",&esc);
+        printf("\nPropiedade a ser alterada: ");
+        fflush(stdin);
+        gets(esco0);
+
+        
+        
     }
-    
-    
+    else if (tolower(esco)=="placa mae")
+    {
+        printf("\nPropiedade a ser alterada: ");
+        fflush(stdin);
+        gets(esco0);
+
+    }
 }
 void mostra(pc pc, int es)
 {
