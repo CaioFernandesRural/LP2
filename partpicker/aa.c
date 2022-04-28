@@ -108,19 +108,15 @@ void altera(pc pc, int es)
 
     if (tolower(esco) == "processador")
     {
-        printf("\nPropiedade a ser alterada: ");
+        printf("\nPropriedade a ser alterada: ");
         fflush(stdin);
         gets(esco0);
-
-        
-        
     }
     else if (tolower(esco)=="placa mae")
     {
-        printf("\nPropiedade a ser alterada: ");
+        printf("\nPropriedade a ser alterada: ");
         fflush(stdin);
         gets(esco0);
-
     }
 }
 void mostra(pc pc, int es)
