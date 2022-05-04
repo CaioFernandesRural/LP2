@@ -5,9 +5,9 @@ int somavalor(int numero)
 {
     return numero+5;
 }
-void somaponteiro(int *numero)
+void somaponteiro(int *porta)
 {
-    *numero+=5;
+    *porta+=5;
 }
 
 void main()
@@ -17,11 +17,11 @@ void main()
     printf("\nNumero: ");
     scanf("%d",&x);
 
-    printf("\nSoma por valor: %d",somavalor(x));//recebe o valor de x
+    printf("\nSoma por valor: %d", somavalor(x));//recebe o valor de x
     printf("\nProva de que nao foi alterado: %d", x);//x continua igual
 
     somaponteiro(&x);//recebe o endereço na memória de x
 
-    printf("\nSoma por ponteiro: %d",x);//5 foi somado diretamente na variável x
+    printf("\nSoma por ponteiro: %d", x);//5 foi somado diretamente na variável x
     printf("\nProva de que foi alterado: %d", x);
 }
